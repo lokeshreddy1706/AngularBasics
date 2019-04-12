@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="d-flex">
+      <div class="p-2 flex-fill">
+          <input class="form-control" type="text" id="number" name="number" placeholder="Enter number.." required>
+        </div>
+    <div class="p-2 flex-fill">
+      <button type="button" id="add" class="btn btn-primary" (click)="openModal('addEditModal','add')">Add Modal</button>
+    </div>
+    <div class="p-2 flex-fill"><button type="button" id="edit" class="btn btn-primary" (click)="openModal('addEditModal','edit')">Edit
+        Modal</button></div>
+    <div class="p-2 flex-fill"><button type="button" id="edit" class="btn btn-primary" (click)="openModal('formArrayModal','')">FormArray
+        in Modal</button></div>
+  </div>
+</div>
+<ngx-smart-modal [closable]="false" [backdrop]="true" #addEditModal identifier="addEditModal">
+  <div class="d-flex flex-row-reverse">
+    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="closeModal('addEditModal')">Close
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary" (click)="closeModal('addEditModal')">Save</button>
+  </div>
+  <app-maintenance-form></app-maintenance-form>
+</ngx-smart-modal>
+<ngx-smart-modal [closable]="false" #formArrayModal identifier="formArrayModal" customClass="large-modal" target="button#targetElement">
+  <div class="d-flex flex-row-reverse">
+    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="closeModal('formArrayModal')">Close
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary" (click)="closeModal('formArrayModal')">Save</button>
+  </div>
+  <app-form-array-example></app-form-array-example>
+</ngx-smart-modal>

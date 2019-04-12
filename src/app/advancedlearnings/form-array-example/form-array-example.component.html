@@ -1,0 +1,28 @@
+<h1>Add Multiple Heroes</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <button type="button" (click)="addNewRow()" class="btn btn-primary">Add new Hero</button><br>
+      <form class="form-horizontal" [formGroup]="addMultipleHeroes" #mh="ngForm">
+        <div formArrayName="multipleHeroes">
+          <div *ngFor="let hero of addMultipleHeroes.controls.multipleHeroes.controls; let i=index" [formGroupName]="i">
+              <h4 class="text-left">Hero #{{ i + 1 }}</h4>
+            <div class="form-group">
+              <label for="name">name:</label>
+              <input class="form-control" type=" text" formControlName="name" id="name" name="name" placeholder="Enter name.."
+                required>
+            </div>
+            <div class="form-group">
+              <label for="number">Number:</label>
+              <input class="form-control" type="text" formControlName="number" id="number" name="number" placeholder="Enter number.."
+                required>
+            </div>
+            <button *ngIf="addMultipleHeroes.controls.multipleHeroes.controls.length > 1" (click)="deleteRow(i)" class="btn btn-danger">Delete
+              Button</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<pre>{{addMultipleHeroes.value | json}}</pre>

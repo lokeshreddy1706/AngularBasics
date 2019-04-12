@@ -1,0 +1,38 @@
+<div class="container">
+    <form [formGroup]="addHeroesForm" (ngSubmit)="saveData()">
+  
+      <label for="firstName">First Name</label>
+      <input type="text" formControlName="firstName" id="firstName" name="firstname" placeholder="Your name.." required>
+  
+      <label for="lastName">Last Name</label>
+      <input type="text" formControlName="lastName" id="lastName" name="lastname" placeholder="Your last name..">
+
+      <label for="age">Age</label>
+      <input type="text" formControlName="age" id="age" name="age" placeholder="Your Age.." required>
+  
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" formControlName="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="state">State</label>
+      <select id="state" name="state" formControlName="state">
+        <option value="Telanaga">Telanaga</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="TamilNadu">TamilNadu</option>
+      </select>
+
+      <label for="city">City</label>
+      <select id="city" name="city" formControlName="city">
+        <option value="hyderabad">Hyderabad</option>
+        <option value="guntur">Guntur</option>
+        <option value="banglore">Banglore</option>
+        <option value="chennai">Chennai</option>
+      </select>
+
+      <button type="submit" [disabled]="!addHeroesForm.valid">Submit</button>
+  
+    </form>
+  </div>

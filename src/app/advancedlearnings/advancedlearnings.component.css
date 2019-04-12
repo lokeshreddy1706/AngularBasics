@@ -1,0 +1,7 @@
+.large-modal {
+    max-width: none !important;
+}
+    
+.nsm-dialog  .medium-modal {
+    max-width: 1280px;
+}

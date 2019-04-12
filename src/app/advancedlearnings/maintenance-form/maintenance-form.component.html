@@ -1,0 +1,42 @@
+<h1>Add or Edit a Hero</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <form class="form-horizontal" [formGroup]="maintenanceForm" #mf="ngForm">
+        <div class="form-group">
+          <label for="number">Number:</label>
+          <input class="form-control" type="text" formControlName="number" id="number" name="number" placeholder="Enter number.."
+            required>
+          <div *ngIf=formErrors.number> {{formErrors.number}} </div>
+        </div>
+        <div class="form-group">
+          <label for="body">Body:</label>
+          <input class="form-control" type=" text" formControlName="body" id="body" name="body" placeholder="Enter body.."
+            required>
+          <div *ngIf=formErrors.body> {{formErrors.number}} </div>
+        </div>
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <input class="form-control" type="text" formControlName="status" id="status" name="status" placeholder="Enter status.."
+            required>
+        </div>
+        <div class="form-group">
+          <label for="state">city:</label>
+          <ng-select [items]="cities" [virtualScroll]="true" bindLabel="name" formControlName="state" id="state" name="state"
+            placeholder="Select city">
+          </ng-select>
+        </div>
+        <div class="form-group">
+          <label for="issueDate">Issue Date:</label>
+          <input class="form-control" type="text" formControlName="issueDate" id="issueDate" name="issueDate"
+            placeholder="Enter date.." required>
+        </div>
+        <div class="form-group">
+          <label for="expDate">Exp Date:</label>
+          <input class="form-control" type="text" formControlName="expDate" id="expDate" name="expDate" placeholder="Enter Date.."
+            required>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

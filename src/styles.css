@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~ngx-smart-modal/ngx-smart-modal";
+@import "app/app.component";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";

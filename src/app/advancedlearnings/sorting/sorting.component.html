@@ -1,0 +1,139 @@
+<div class="col">
+  <h3>One-Dimensional Arrays</h3>
+  <div class="col-md-4">
+    <h4>Add Fruit</h4>
+    <div class="form-group input-group">
+      <input type="text" class="form-control" [(ngModel)]="newFruit" name="newFruit">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-primary" (click)="addFruit()" [disabled]="!newFruit">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col">
+  <div class="col-md-4">
+    <h4>Unordered</h4>
+    <code>*ngFor="let f of fruit"</code><br />
+    <ul>
+      <li *ngFor="let f of fruit">{{f}}</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <h4>Ordered</h4>
+    <code>*ngFor="let f of fruit | orderBy : '{{fruitOrderByConfig}}'"</code><br />
+    <code>*ngFor="let f of fruit | orderBy : ['{{fruitOrderByConfig}}']"</code><br />
+    <div class="row">
+      <div class="col-md-4">
+        <ul>
+          <li *ngFor="let f of fruit | orderBy : fruitOrderByConfig">{{f}}</li>
+        </ul>
+      </div>
+      <div class="col-md-6" style="padding-top: 25px">
+        <div class="row form-group">
+          <label for="fruitOrderByConfig" class="col-sm-4">Order By</label>
+          <div class="col-sm-8">
+            <select class="form-control" (change)="setFruitConfig($event.target.value)">
+              <option value="+" [selected]="fruitOrderByConfig == '+'">Ascending</option>
+              <option value="-" [selected]="fruitOrderByConfig == '-'">Descending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col">
+  <h3 class="text-center">Multi-Dimensional Arrays</h3>
+  <div class="col-md-8">
+    <h4>Add PFIN Details</h4>
+    <div class="row">
+      <div class="col-md-3 form-group">
+        <label for="taxId">Tax Id</label>
+        <input type="text" class="form-control" [(ngModel)]="newPfinDetails.taxId" name="taxId">
+      </div>
+      <div class="col-md-3 form-group">
+        <label for="pfinNumber">PFIN Number</label>
+        <input type="text" class="form-control" [(ngModel)]="newPfinDetails.pfinNumber" name="pfinNumber">
+      </div>
+      <div class="col-md-3 form-group">
+        <label for="age">Bill PFIN Number</label>
+        <input type="number" min="18" max="120" class="form-control" [(ngModel)]="newPfinDetails.billpfinNumber"
+          name="age">
+      </div>
+      <div class="col-md-3 form-group">
+        <label for="add">&nbsp;</label>
+        <button type="button" class="btn btn-primary form-control" (click)="addPfinDetails()"
+          [class.disabled]="!newPfinDetails.taxId || !newPfinDetails.pfinNumber || !newPfinDetails.billpfinNumber">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h4>Unordered</h4>
+    <code>*ngFor="let pfinDetail of pfinDetails"</code><br />
+    <ul>
+      <li *ngFor="let pfinDetail of pfinDetails">{{pfinDetail.taxId}} {{pfinDetail.pfinNumber}}, {{pfinDetail.billpfinNumber}}</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <h4>Ordered</h4>
+    <code>*ngFor="let pfinDetail of pfinDetails | orderBy : ['{{pfinDetailsOrderByConfig[0]}}', '{{pfinDetailsOrderByConfig[1]}}', '{{pfinDetailsOrderByConfig[2]}}']"</code><br />
+    <div class="row">
+      <div class="col-md-4">
+        <ul>
+          <li *ngFor="let pfinDetail of pfinDetails | orderBy : pfinDetailsOrderByConfig">{{pfinDetail.taxId}}
+            {{pfinDetail.pfinNumber}}, {{pfinDetail.billpfinNumber}}</li>
+        </ul>
+      </div>
+      <div class="col-md-6" style="padding-top: 25px">
+        <div class="row form-group">
+          <label for="fruitOrderByConfig" class="col-sm-4">Order By</label>
+          <div class="col-sm-8">
+            <select class="form-control" (change)="setpfinDetailsConfig('property', 1, $event.target.value)">
+              <option value="taxId" [selected]="pfinDetailsOrderBy1Property == 'taxId'">Tax Id</option>
+              <option value="pfinNumber" [selected]="pfinDetailsOrderBy1Property == 'pfinNumber'">PFIN Number</option>
+              <option value="billpfinNumber" [selected]="pfinDetailsOrderBy1Property == 'billpfinNumber'">Bill PFIN
+                Number</option>
+            </select>
+            <select class="form-control" (change)="setpfinDetailsConfig('desc', 1, $event.target.value)">
+              <option value="" [selected]="pfinDetailsOrderBy1Desc == ''">Ascending</option>
+              <option value="-" [selected]="pfinDetailsOrderBy1Desc == '-'">Descending</option>
+            </select>
+          </div>
+        </div>
+        <div class="row form-group">
+          <label for="fruitOrderByConfig" class="col-sm-4">Then By</label>
+          <div class="col-sm-8">
+            <select class="form-control" (change)="setpfinDetailsConfig('property', 2, $event.target.value)">
+              <option value="taxId" [selected]="pfinDetailsOrderBy2Property == 'taxId'">Tax Id</option>
+              <option value="pfinNumber" [selected]="pfinDetailsOrderBy2Property == 'pfinNumber'">PFIN Number</option>
+              <option value="billpfinNumber" [selected]="pfinDetailsOrderBy2Property == 'billpfinNumber'">Bill PFIN
+                Number</option>
+            </select>
+            <select class="form-control" (change)="setpfinDetailsConfig('desc', 2, $event.target.value)">
+              <option value="" [selected]="pfinDetailsOrderBy2Desc == ''">Ascending</option>
+              <option value="-" [selected]="pfinDetailsOrderBy2Desc == '-'">Descending</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <label for="fruitOrderByConfig" class="col-sm-4">Then By</label>
+          <div class="col-sm-8">
+            <select class="form-control" (change)="setpfinDetailsConfig('property', 3, $event.target.value)">
+              <option value="taxId" [selected]="pfinDetailsOrderBy3Property == 'taxId'">Tax Id</option>
+              <option value="pfinNumber" [selected]="pfinDetailsOrderBy3Property == 'pfinNumber'">PFIN Number</option>
+              <option value="billpfinNumber" [selected]="pfinDetailsOrderBy3Property == 'billpfinNumber'">Bill PFIN
+                Number</option>
+            </select>
+            <select class="form-control" (change)="setpfinDetailsConfig('desc', 3, $event.target.value)">
+              <option value="" [selected]="pfinDetailsOrderBy3Desc == ''">Ascending</option>
+              <option value="-" [selected]="pfinDetailsOrderBy3Desc == '-'">Descending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

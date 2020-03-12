@@ -1,2 +1,2 @@
 # AngularBasics
-Testing
+Sample Project
